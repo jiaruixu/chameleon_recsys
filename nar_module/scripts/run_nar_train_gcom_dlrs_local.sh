@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DATA_DIR="[REPLACE WITH THE PATH TO UNZIPPED GCOM DATASET FOLDER]" && \
+DATA_DIR="../data/news-portal-user-interactions-by-globocom" && \
 JOB_PREFIX=gcom && \
 JOB_ID=`whoami`_${JOB_PREFIX}_`date '+%Y_%m_%d_%H%M%S'` && \
 MODEL_DIR='/tmp/chameleon/jobs/'${JOB_ID} && \
@@ -28,6 +28,5 @@ python3 -m nar.nar_trainer_gcom_dlrs \
 	--train_negative_samples_from_buffer 10 \
 	--eval_total_negative_samples 50 \
 	--eval_negative_samples_from_buffer 50 \
-	--eval_metrics_by_session_position \
 	--save_eval_sessions_negative_samples
 
