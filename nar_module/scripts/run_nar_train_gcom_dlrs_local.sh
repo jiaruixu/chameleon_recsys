@@ -28,5 +28,6 @@ python3 -m nar.nar_trainer_gcom_dlrs \
 	--train_negative_samples_from_buffer 10 \
 	--eval_total_negative_samples 50 \
 	--eval_negative_samples_from_buffer 50 \
+	--eval_metrics_by_session_position \
 	--save_eval_sessions_negative_samples
 
