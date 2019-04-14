@@ -1,19 +1,14 @@
 nvidia-docker run --rm -it \
-	-v `pwd`/:/root \
+	-v /home/jiaruixu/git/chameleon_recsys/:/root \
 	chameleon \
-	DATA_DIR="../data/news-portal-user-interactions-by-globocom" && \
-    JOB_PREFIX=gcom && \
-    JOB_ID=`whoami`_${JOB_PREFIX}_`date '+%Y_%m_%d_%H%M%S'` && \
-    MODEL_DIR='./jobs/'${JOB_ID} && \
-    echo 'Running training job and outputing to '${MODEL_DIR} && \
-    python3 -m nar.nar_trainer_gcom_dlrs \
-        --model_dir ${MODEL_DIR} \
-        --train_set_path_regex "${DATA_DIR}/sessions_tfrecords/sessions_hour_*.tfrecord.gz" \
+    	python3 -m nar_module.nar.nar_trainer_gcom_dlrs \
+        --model_dir jobs/ \
+        --train_set_path_regex "data/news-portal-user-interactions-by-globocom/sessions_tfrecords/sessions_hour_*.tfrecord.gz" \
         --train_files_from 0 \
         --train_files_up_to 72 \
         --training_hours_for_each_eval 5 \
-        --acr_module_articles_metadata_csv_path ${DATA_DIR}/articles_metadata.csv \
-        --acr_module_articles_content_embeddings_pickle_path ${DATA_DIR}/articles_embeddings.pickle \
+        --acr_module_articles_metadata_csv_path data/news-portal-user-interactions-by-globocom/articles_metadata.csv \
+        --acr_module_articles_content_embeddings_pickle_path data/news-portal-user-interactions-by-globocom/articles_embeddings.pickle \
         --batch_size 256 \
         --truncate_session_length 20 \
         --learning_rate 0.001 \

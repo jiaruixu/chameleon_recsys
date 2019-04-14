@@ -666,7 +666,7 @@ class NARModuleModel():
                                     #Trainable item embedding
                                     item_clicked_interactions_embedding,
                                     item_contextual_features,
-                                    items_dynamic_features, 
+                                    #items_dynamic_features, 
                                     #item_clicked_not_padding
                                     ]
 
